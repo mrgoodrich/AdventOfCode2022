@@ -18,6 +18,13 @@ const regex = entireLine; //      /()\n/gm;
 
 let input = [];
 let count = 0;
+let d = new pycollections.Dict();
+let dd = new pycollections.DefaultDict([].constructor);
+let c = new pycollections.Counter();
+let od = new pycollections.OrderedDict();
+
+let NT = pycollections.NamedTuple('Js', ['a', 'b']);
+let nt = new NT(1, 2);
 
 // ----------- SOLUTION ------------------------
 let result;
@@ -38,7 +45,6 @@ while((result = regex.exec(inFile)) !== null) {
 // }
 
 for (const v of input) {
-  console.log(v);
 }
 
 
