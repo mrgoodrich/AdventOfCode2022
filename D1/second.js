@@ -1,7 +1,7 @@
 // ----------- PACKAGES -----------------------
 const fs = require('fs');
-const {all, any, contains, enumerate, filter, iter, map, partition, permutations, range, reduce, reduce_, sorted, sum, toArray, zip, zip3} = require('iter-tools');
-const {max, min} = require('itertools');
+const iter = require('iter-tools');
+const {max, min, sorted} = require('itertools');
 // const Map = require('collections/map');
 const pycollections = require('pycollections');
 
@@ -43,23 +43,25 @@ while((result = regex.exec(inFile)) !== null) {
 //
 //   }
 // }
-let top = -1;
-let tot = 0;
-
+let tot  = 0;
+let sums = [];
 
 for (const v of input) {
   // console.log(parseInt(v));
   if (v) {
     tot += parseInt(v);
+    // console.log(parseInt(v))
+    // console.log(tot)
   }
   if (!v) {
-    if (tot > top) {
-      top = tot;
-    }
+    // console.log(tot);
+    sums.push(tot);
     tot = 0;
   }
 }
-console.log(top)
+let s = sorted(sums);
+let r = iter.arrayFrom(iter.reverse(s));
+console.log(r[0] + r[1] + r[2]);
 
 
 
