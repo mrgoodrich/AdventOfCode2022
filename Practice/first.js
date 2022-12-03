@@ -8,6 +8,9 @@ const pycollections = require('pycollections');
 function print(s) {
   console.log(s);
 }
+function iprint(s) {
+  print([...s]);
+}
 
 // if o is GeneratorFunctionPrototype [Generator] {}
 // [...o] or Array.from(o)
@@ -57,10 +60,30 @@ while((result = regex.exec(inFile)) !== null) {
 
 
 print(execPipe(
+  input,
+  map(a => parseInt(a)),
+  splitOn(NaN),
+  map(a => reduce((c,d) => c + d, a)),
+  takeSorted((a, b) => b-a),
+  take(3),
+  it.sum
+))
+
+
+// print(input)
+// let nums = iT.map(a => parseInt(a), input);
+// let nparagraphs = iT.map(iT.toArray, iT.splitOn(NaN, nums));
+// let isums = iT.map(a => it.sum(a), nparagraphs);
+// let tot = iT.findBest(iT.firstHighest, isums);
+// print(tot)
+
+// iT.map((a) => it.sum(parseInt(a)), )
+// print(it.sum(iT.map((a) => it.sum(parseInt(a)), iT.splitOn('', input))));
 
 
 
-));
+
+
 
 
 

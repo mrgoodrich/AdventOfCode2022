@@ -1,0 +1,83 @@
+iterTools (iter-tools)
+
+> Create iterables
+cycle, cycleTimes, range, repeat, repeatTimes
+
+> Create iterables from objects
+objectEntries, objectKeys, objectValues
+
+> Use iterables from data structures
+wrapEntries, wrapKeys, wrapValues
+
+> Transform a single iterable 1i-1i
+append, distinct, drop, dropWhile, enumerate, filter, flat, flatMap, interpose,
+interposeSeq, map, prepend, reverse, slice, take, takeSorted, takeWhile, tap,
+window, windowAhead, windowBehind, wrap
+
+> Separate an iterable into multiple iterables 1i-mi
+batch, bisect, split, splitGroups, splitOn, splitOnAny, splitOnAnySeq, splitOnSeq, splitWhen
+
+> Combine multiple iterables mi-1i
+collate, compress, concat, asyncInterleaveReady, join, joinWith, joinWithSeq,
+roundRobin, zip, zipAll
+
+> Reduce an iterable to a single value 1i-1
+deepEqual, equal, every, find, findBest, findBestOr, findOr, first, firstOr,
+includes, includesAny, includesAnySeq, includesSeq, isEmpty, isSorted, reduce,
+size, some, startsWith, startsWithAny, startsWithAnySeq, startsWithSeq, str,
+takeLast, takeLastOr
+
+> Control timing inside an async iterable
+asyncBuffer, asyncThrottle
+
+> Cache an iterable
+fork
+
+> Consume an iterable
+arrayFrom, arrayFromAsync, consume, forEach, objectFrom, objectFromAsync,
+stringFrom, stringFromAsync, toArray, toObject
+
+> Predicates (test a value)
+isArray, isAsyncIterable, isAsyncLoopable, isAsyncWrappable, isIterable,
+isLoopable, isNil, isNull, isObject, isString, isUndefined, isWrappable,
+notArray, notAsyncIterable, notAsyncLoopable, notAsyncWrappable, notIterable,
+notLoopable, notNil, notNull, notObject, notString, notUndefined, notWrappable
+
+> Compare values and return true or false 1i-t/f
+firstHighest, firstLowest, lastHighest, lastLowest
+
+> Utilities
+apply, arrayFirst, arrayFirstOr, arrayLast, arrayLastOr, arrayReverse, call,
+compose, execPipe, getSize, pipe, when
+
+> Generator helpers
+forkerate, interleave, peekerate, spliterate, spliterateGrouped
+
+
+------
+
+itertools
+
+> builtins
+all, any, contains, enumerate, filter, iter, map, max, min, range, reduce,
+reduce_, sorted, sum, zip, zip3
+
+> ports of itertools
+chain, compress, count, cycle, dropwhile, groupby, icompress, ifilter, imap,
+islice, izip, izip3, izipLongest, izipMany, permutations, repeat, takewhile,
+zipLongest, zipMany
+
+> ports of more-itertools
+chunked, flatten, intersperse, itake, pairwise, partition, roundrobin, heads,
+take, uniqueEverseen, uniqueJustseen
+
+> additionsx
+compact, compactObject, first, flatmap, icompact
+
+
+
+
+
+
+
+.
