@@ -14,19 +14,17 @@ while((result = regex.exec(inFile)) !== null) {
 }
 
 let r = execPipe(input,
-  map(a => a.split(",").map(b => b.split("-"))),
-
+  map(a => a.split(",")),
+  map(flatMap(a=>a.split('-'))),
+  map(map(a => parseInt(a))),
+  mapToArray,
+  filter(a =>
+    (a[0] <= a[2] && a[1] >= a[3]) ||
+      (a[2] <= a[0] && a[3] >= a[1])
+  ),
+  size
 );
-
-for ([c, d] of r) {
-  if (parseInt(c[0]) <= parseInt(d[0]) && parseInt(c[1]) >= parseInt(d[1])) {
-    count ++;
-  } else if (parseInt(d[0]) <= parseInt(c[0]) && parseInt(d[1]) >= parseInt(c[1])) {
-    count++;
-  }
-}
-print(count)
-
+print(r)
 
 
 
