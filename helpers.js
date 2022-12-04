@@ -4,7 +4,12 @@ var it = require('itertools');
 Object.entries(require('iter-tools')).forEach(([name, exported]) => global[name] = exported);
 
 function print(s) {
-  console.log(s);
+  if (s.constructor.name === 'IterableIterator') {
+    console.log('IterableIterator');
+    iprint(s)
+  } else {
+    console.log(s)
+  }
 }
 function iprint(s) {
   print([...s]);
