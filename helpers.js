@@ -6,6 +6,9 @@ Object.entries(require('iter-tools')).forEach(([name, exported]) => global[name]
 function print(s) {
   console.log(s);
 }
+function iprint(s) {
+  print([...s]);
+}
 
 // if o is GeneratorFunctionPrototype [Generator] {}
 // [...o] or Array.from(o)
