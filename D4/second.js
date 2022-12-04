@@ -19,9 +19,9 @@ let r = execPipe(input,
 );
 
 for ([c, d] of r) {
-  if (parseInt(c[0]) <= parseInt(d[0]) && parseInt(c[1]) >= parseInt(d[1])) {
+  if (parseInt(c[0]) <= parseInt(d[0]) && parseInt(c[1]) >= parseInt(d[0])) {
     count ++;
-  } else if (parseInt(d[0]) <= parseInt(c[0]) && parseInt(d[1]) >= parseInt(c[1])) {
+  } else if (parseInt(d[0]) <= parseInt(c[0]) && parseInt(d[1]) >= parseInt(c[0])) {
     count++;
   }
 }
