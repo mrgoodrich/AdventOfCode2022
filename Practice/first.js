@@ -11,6 +11,10 @@ function print(s) {
 function iprint(s) {
   print([...s]);
 }
+let sum = a => reduce((c,d) => c + d, a);
+let sorted = takeSorted;
+let sortedReverse = takeSorted((a, b) => b-a);
+let toInt = map(a => parseInt(a));
 
 // if o is GeneratorFunctionPrototype [Generator] {}
 // [...o] or Array.from(o)
@@ -59,14 +63,13 @@ while((result = regex.exec(inFile)) !== null) {
 // }
 
 
-print(execPipe(
-  input,
-  map(a => parseInt(a)),
+print(execPipe(input,
+  toInt,
   splitOn(NaN),
-  map(a => reduce((c,d) => c + d, a)),
-  takeSorted((a, b) => b-a),
+  map(sum),
+  sortedReverse,
   take(3),
-  it.sum
+  sum
 ))
 
 

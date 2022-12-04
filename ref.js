@@ -67,3 +67,15 @@ function union(a, b) {
   (?:) - non capture group, i.e. /(?:Jane|John|Alison)\s(.*?)\s(?:Smith|Smuth)/ only captures middle name
 */
 
+// for (const ndx in input) {
+//
+// }
+
+// for (const v of input) {
+//   for (const v2 of input) {
+//
+//   }
+// }
+
+// for (const v of input) {
+// }
