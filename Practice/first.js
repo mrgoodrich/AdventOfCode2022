@@ -86,7 +86,15 @@ print(execPipe(input,
 
 
 
+iprint(execPipe(input,
+  splitOn(''),
+  map(a => reduce("", (result, v) => result + " " + v, a)),
+  map(a => a.trim().split(" ")),
+  map(a => {
+    return toArray(flatMap(b => b.split(":"), a))
+  })
 
+));
 
 
 

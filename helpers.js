@@ -34,3 +34,4 @@ var sum = a => reduce((c,d) => c + d, a);
 var sorted = takeSorted;
 var sortedReverse = takeSorted((a, b) => b-a);
 var toInt = map(a => parseInt(a));
+var mapToArray = map(a => Array.from(a));

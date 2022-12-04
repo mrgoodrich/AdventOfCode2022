@@ -13,8 +13,8 @@ while((result = regex.exec(inFile)) !== null) {
   input.push(firstGroup);
 }
 
-print(execPipe(input,
-
+iprint(execPipe(input,
+  
 ));
 
 
