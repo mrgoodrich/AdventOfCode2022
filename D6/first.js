@@ -14,14 +14,22 @@ while((result = regex.exec(inFile)) !== null) {
   input.push(firstGroup);
 }
 
+input = input[0]
 
+let packageMarkerLength = 4;
 
-// let firstIter =
-// print(execPipe(input,
-//
-// ));
-
-
+print(execPipe(input,
+  splitOnSeq(''),
+  flat,
+  window(packageMarkerLength),
+  map(pipe(wrap, distinct)),
+  enumerate,
+  filter(([a,b]) => size(b) == packageMarkerLength),
+  map(take(1)),
+  flat,
+  add(packageMarkerLength),
+  first
+));
 
 
 

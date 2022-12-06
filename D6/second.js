@@ -5,6 +5,7 @@ const inFile = fs.readFileSync('inputs/input', 'utf8');
 const regex = entireLine; // /([^\n]*)\n/gm
 
 let input = [];
+let inputCopy = [...input];
 
 let result;
 while((result = regex.exec(inFile)) !== null) {
@@ -13,34 +14,22 @@ while((result = regex.exec(inFile)) !== null) {
   input.push(firstGroup);
 }
 
-let lastfour = [];
-// let firstIter =
-// print(execPipe(input,
-//
-// ));
-let x = 14;
+input = input[0]
 
-function hasRepeats (str) {
-    return /(.).*\1/.test(str);
-}
+let startOfMessageLength = 14;
 
-input = input[0];
-for (let v of input) {
-  if (lastfour.length== x) {
-    lastfour.shift();
-  }
-
-  if (lastfour.length == x-1 && !lastfour.includes(v) && !hasRepeats(lastfour.join(""))) {
-    print(count + 1)
-    break;
-  } else {
-    lastfour.push(v);
-
-  }
-  count++;
-}
-
-
+print(execPipe(input,
+  splitOnSeq(''),
+  flat,
+  window(startOfMessageLength),
+  map(pipe(wrap, distinct)),
+  enumerate,
+  filter(([a,b]) => size(b) == startOfMessageLength),
+  map(take(1)),
+  flat,
+  add(startOfMessageLength),
+  first
+));
 
 
 
