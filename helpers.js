@@ -5,14 +5,28 @@ Object.entries(require('iter-tools')).forEach(([name, exported]) => global[name]
 
 function print(s) {
   if (s.constructor.name === 'IterableIterator') {
-    console.log('IterableIterator');
+    // console.log('IterableIterator');
     iprint(s)
   } else {
     console.log(s)
   }
 }
 function iprint(s) {
-  print([...s]);
+  print($unwrapDeep(s));
+}
+
+function $unwrapDeep(iterable) {
+  const values = [];
+
+  for (const value of iterable) {
+    if (typeof value !== 'string' && isIterable(value)) {
+      values.push($unwrapDeep(value));
+    } else {
+      values.push(value);
+    }
+  }
+
+  return values;
 }
 
 // if o is GeneratorFunctionPrototype [Generator] {}
@@ -40,3 +54,5 @@ var sorted = takeSorted;
 var sortedReverse = takeSorted((a, b) => b-a);
 var toInt = map(a => parseInt(a));
 var mapToArray = map(a => Array.from(a));
+var add = (a) => map(v => v + a);
+var subtract = (a) => map(v => v - a);

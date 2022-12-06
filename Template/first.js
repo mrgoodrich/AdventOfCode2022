@@ -14,9 +14,12 @@ while((result = regex.exec(inFile)) !== null) {
   input.push(firstGroup);
 }
 
+// input = input[0];
+
 // let firstIter =
 print(execPipe(input,
-
+  // splitOnSeq(''),
+  // mapToArray,
 ));
 
 

@@ -99,6 +99,13 @@ iprint(execPipe(input,
 
 
 
+input = input[0]
+
+print(execPipe(input,
+  splitOnSeq(''),
+  mapToArray
+));
+
 
 
 
