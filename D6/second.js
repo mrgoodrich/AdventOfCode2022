@@ -18,14 +18,19 @@ let lastfour = [];
 // print(execPipe(input,
 //
 // ));
+let x = 14;
+
+function hasRepeats (str) {
+    return /(.).*\1/.test(str);
+}
 
 input = input[0];
 for (let v of input) {
-  if (lastfour.length== 4) {
+  if (lastfour.length== x) {
     lastfour.shift();
   }
 
-  if (lastfour.length == 3 && !lastfour.includes(v) && (lastfour[0] != lastfour[1]) && (lastfour[1] != lastfour[2]) && lastfour[0] != lastfour[2]) {
+  if (lastfour.length == x-1 && !lastfour.includes(v) && !hasRepeats(lastfour.join(""))) {
     print(count + 1)
     break;
   } else {
