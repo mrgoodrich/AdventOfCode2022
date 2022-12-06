@@ -5,6 +5,7 @@ const inFile = fs.readFileSync('inputs/input', 'utf8');
 const regex = entireLine; // /([^\n]*)\n/gm
 
 let input = [];
+let inputCopy = [...input];
 
 let result;
 while((result = regex.exec(inFile)) !== null) {
