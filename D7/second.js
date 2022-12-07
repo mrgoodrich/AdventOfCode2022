@@ -88,8 +88,49 @@ function getMapTotal(sys) {
   return bytes;
 }
 
-getMapTotal(filesys);
-console.log(total);
+let rootSize = getMapTotal(filesys);
+
+let totalSize = 70000000;
+let unused = totalSize - rootSize;
+
+let needed = 30000000 - unused;
+
+let curBestDir = 'none';
+let curBest = 1000000000000;
+
+function isCloser(bytes) {
+  return bytes > needed && bytes < curBest;
+}
+
+function findBest(sys, thisKey) {
+  let bytes = 0;
+  // console.log(Object.entries(sys))
+  for (const [key, value] of sys.entries()) {
+    if (key === 'parent') {
+      // break;
+    } else {
+      if (value instanceof Map) {
+        // console.log('calling with')
+        // console.log(value)
+        bytes += findBest(value, key);
+      } else {
+        bytes += parseInt(value);
+      }
+    }
+  }
+  if (isCloser(bytes)) {
+    curBestDir = thisKey;
+    curBest = bytes;
+  }
+  return bytes;
+}
+
+findBest(filesys, 'ROOT');
+
+console.log(curBest);
+
+
+// console.log(total);
 
 
 
