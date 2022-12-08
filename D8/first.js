@@ -21,13 +21,12 @@ class Command {
     this.output = output;
   }
 }
-// Command
-//   cmd: 'cd'
-//   args: ['/']
-//   output: [['dir', 'bqc'], ['143562', 'nrwjb']]
 
 let computer = {
   'cd': (command) => {
+    // $ cd /
+    // $ cd ..
+    // $ cd bqc
     if (command.args[0] === '..') {
       pwd = pwd.get('..');
     } else {
@@ -40,6 +39,9 @@ let computer = {
   },
 
   'ls': (command) => {
+    // $ ls
+    //     5693 qqvdcclf
+    //     dir rlf
     for (let output of command.output) {
       if (output[0] === 'dir') {
         let child = new Map([['..', pwd]]);
@@ -51,9 +53,15 @@ let computer = {
   },
 
   '': (command) => {
-    
+    //
+
   }
 }
+
+// Command
+//   cmd: 'cd'
+//   args: ['/']
+//   output: [['dir', 'bqc'], ['143562', 'nrwjb']]
 
 const commands = parseCommands(input);
 const filesys = new Map();
