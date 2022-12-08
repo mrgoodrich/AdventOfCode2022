@@ -25,61 +25,82 @@ while((result = regex.exec(inFile)) !== null) {
 
 let visible = {};
 
-function setVis(row, col) {
-  if (!visible[row]) {
-    visible[row] = {};
-  }
-  visible[row][col] = 1;
-}
+// function setVis(row, col) {
+//   if (!visible[row]) {
+//     visible[row] = {};
+//   }
+//   visible[row][col] = 1;
+// }
 
-function checkIfTaller(tree, others, row, col) {
-  if (others.length == 0) {
-    return setVis(row, col);
-  }
+function getDist(tree, others, row, col) {
+  let dist = 0;
   // print('comparing ' + tree + ' with  ' + others)
+  if (others.length == 0) {
+    dist = 0;
+  }
   for (let other of others) {
     if (tree <= other) {
-      return 0;
+      // print('returning ' + (dist + 1))
+      return dist + 1;
+    } else {
+      dist++;
     }
   }
-  return setVis(row, col);
+    // print('returning ' + (dist ))
+  return dist;
 }
 
-// let total = 0;
+let best = 0;
+
+function multiply (array) {
+    var sum=1;
+    for (var i=0; i<array.length; i++) {
+        sum = sum * array[i];
+    }
+    return sum;
+}
 
 for (let row = 0; row < input.length; row++) {
   let rowVal = input[row];
   for (let col = 0; col < rowVal.length; col++) {
     let tree = rowVal[col];
+    let thisTreeVis = [];
 
     let checks = [];
     for (let left = col - 1; left >= 0; left--) {
         checks.push(rowVal[left]);
     }
-    checkIfTaller(tree, checks, row, col);
+    thisTreeVis.push(getDist(tree, checks, row, col));
 
     checks = [];
     for (let right = col + 1; right < rowVal.length; right++) {
         checks.push(rowVal[right]);
     }
-    checkIfTaller(tree, checks, row, col);
+    thisTreeVis.push(getDist(tree, checks, row, col));
 
     checks = [];
     for (let above = row - 1; above >= 0; above--) {
         checks.push(input[above][col]);
     }
-    checkIfTaller(tree, checks, row, col);
+    thisTreeVis.push(getDist(tree, checks, row, col));
 
 
     checks = [];
     for (let below = row + 1; below < rowVal.length; below++) {
         checks.push(input[below][col]);
     }
-    checkIfTaller(tree, checks, row, col);
+    thisTreeVis.push(getDist(tree, checks, row, col));
+
+    // let myvis = thisTreeVis
+    let myvis = multiply(thisTreeVis);
+    if (myvis > best) {
+      best = myvis;
+    }
   }
 }
 
-print(Object.values(visible).flatMap(v => Object.values(v)).length)
+// print(Object.values(visible).flatMap(v => Object.values(v)).length)
+print(best)
 
 
 
