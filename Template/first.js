@@ -18,8 +18,7 @@ while((result = regex.exec(inFile)) !== null) {
 
 // let firstIter =
 print(execPipe(input,
-  // splitOnSeq(''),
-  // mapToArray,
+  map(split),
 
 ));
 
